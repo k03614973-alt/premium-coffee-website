@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAFE | The Art of Roasting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c4a484;
+            --dark: #1a1a1a;
+            --light: #f4f1ea;
+            --accent: #8b5e3c;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 300;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            background: var(--primary);
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background: #d4b494;
+        }
+
+        /* --- Menu Section --- */
+        .section-padding {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 60px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: translateY 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .menu-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .menu-content {
+            padding: 25px;
+        }
+
+        .menu-content h3 {
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .price {
+            font-weight: 600;
+            color: var(--dark);
+            display: block;
+            margin-top: 15px;
+        }
+
+        /* --- Gallery Section --- */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 300px);
+            gap: 15px;
+            padding: 15px;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            filter: grayscale(30%);
+            transition: 0.5s;
+        }
+
+        .gallery-img:hover {
+            filter: grayscale(0%);
+            transform: scale(0.98);
+        }
+
+        .span-2 { grid-column: span 2; }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 10% 20px;
+            text-align: center;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        footer h4 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+
+        .copyright {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 20px; }
+            .nav-links { display: none; }
+            .gallery { grid-template-columns: repeat(2, 1fr); }
+            .span-2 { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">KAFE</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Freshly Brewed Memories</h1>
+        <p>Experience the finest hand-picked beans, roasted to perfection by masters who live for the perfect cup.</p>
+        <a href="#menu" class="btn">Explore Menu</a>
+    </header>
+
+    <section id="menu" class="section-padding">
+        <h2 class="section-title">Our Signature Brews</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=1000&auto=format&fit=crop" alt="Latte Art" class="menu-img">
+                <div class="menu-content">
+                    <h3>Velvet Latte</h3>
+                    <p>Double shot of espresso with silky micro-foam and a hint of Madagascar vanilla.</p>
+                    <span class="price">$5.50</span>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1000&auto=format&fit=crop" alt="Pour Over" class="menu-img">
+                <div class="menu-content">
+                    <h3>Ethopian Pour Over</h3>
+                    <p>Bright acidity with floral notes of jasmine and citrus peel. For the purists.</p>
+                    <span class="price">$6.25</span>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=1000&auto=format&fit=crop" alt="Cold Brew" class="menu-img">
+                <div class="menu-content">
+                    <h3>Nitro Cold Brew</h3>
+                    <p>Steeped for 18 hours and infused with nitrogen for a creamy, stout-like finish.</p>
+                    <span class="price">$5.75</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <img src="https://images.unsplash.com/photo-1497933322477-941fb430da4d?q=80&w=800&auto=format&fit=crop" class="gallery-img span-2" alt="Coffee beans">
+        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=800&auto=format&fit=crop" class="gallery-img" alt="Coffee grinder">
+        <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop" class="gallery-img" alt="Person holding cup">
+        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=800&auto=format&fit=crop" class="gallery-img" alt="Coffee shop interior">
+        <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=800&auto=format&fit=crop" class="gallery-img span-2" alt="Latte art close up">
+        <img src="https://images.unsplash.com/photo-1506372023823-741c83b836fe?q=80&w=800&auto=format&fit=crop" class="gallery-img" alt="Coffee breakfast">
+    </section>
+
+    <footer id="contact">
+        <div class="footer-grid">
+            <div>
+                <h4>Visit Us</h4>
+                <p>123 Roast Lane<br>Brew City, CA 90210</p>
+            </div>
+            <div>
+                <h4>Hours</h4>
+                <p>Mon - Fri: 7am - 8pm<br>Sat - Sun: 8am - 9pm</p>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p>hello@kafe-roastery.com<br>+1 (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 KAFE Specialty Coffee Roasters. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
